@@ -1,5 +1,13 @@
 [versions]
-kotlin = "1.9.23"
+kotlin = '1.9.23'
+ktor = '2.3.10'
 
 [plugins]
-kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = 'kotlin' }
+kotlin = { id = 'org.jetbrains.kotlin.jvm', version.ref = 'kotlin' }
+
+[libraries]
+ktor-server-core = { group = 'io.ktor', name='ktor-server-core', version.ref = 'ktor' }
+ktor-server-netty = { group = 'io.ktor', name='ktor-server-netty', version.ref = 'ktor' }
+ktor-server-test = { group = 'io.ktor', name='ktor-server-test-host', version.ref = 'ktor' }
+
+kotlin-test = { group = 'org.jetbrains.kotlin', name='kotlin-test', version.ref = 'kotlin' }
