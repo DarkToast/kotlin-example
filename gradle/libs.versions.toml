@@ -9,11 +9,14 @@ koin = '3.5.6'
 
 [plugins]
 kotlin = { id = 'org.jetbrains.kotlin.jvm', version.ref = 'kotlin' }
+serialization = { id = 'org.jetbrains.kotlin.plugin.serialization', version.ref = 'kotlin' }
 
 [libraries]
 ## KTOR
 web-ktor-server-core = { group = 'io.ktor', name='ktor-server-core', version.ref = 'ktor' }
 web-ktor-server-netty = { group = 'io.ktor', name='ktor-server-netty', version.ref = 'ktor' }
+web-ktor-server-content-negotiation = { group = 'io.ktor', name='ktor-server-content-negotiation', version.ref = 'ktor' }
+web-ktor-serialization-json = { group = 'io.ktor', name='ktor-serialization-kotlinx-json', version.ref = 'ktor' }
 
 ## TEST
 test-kotlin = { group = 'org.jetbrains.kotlin', name='kotlin-test', version.ref = 'kotlin' }

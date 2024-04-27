@@ -1,5 +1,6 @@
 plugins {
    alias(libs.plugins.kotlin)
+   alias(libs.plugins.serialization)
 }
 
 repositories {
@@ -9,6 +10,9 @@ repositories {
 dependencies {
     implementation(libs.web.ktor.server.core)
     implementation(libs.web.ktor.server.netty)
+    implementation(libs.web.ktor.server.content.negotiation)
+    implementation(libs.web.ktor.serialization.json)
+
     implementation(libs.logging.kotlin)
     implementation(libs.logging.logback)
 
