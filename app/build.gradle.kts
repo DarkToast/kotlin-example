@@ -7,13 +7,16 @@ repositories {
 }
 
 dependencies {
-    implementation(libs.ktor.server.core)
-    implementation(libs.ktor.server.netty)
+    implementation(libs.web.ktor.server.core)
+    implementation(libs.web.ktor.server.netty)
     implementation(libs.logging.kotlin)
     implementation(libs.logging.logback)
 
-    testImplementation(libs.ktor.server.test)
-    testImplementation(libs.kotlin.test)
+    implementation(libs.db.exposed.core)
+    implementation(libs.di.koin.core)
+
+    testImplementation(libs.test.ktor.server)
+    testImplementation(libs.test.kotlin)
 }
 
 kotlin {
