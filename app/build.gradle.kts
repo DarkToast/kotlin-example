@@ -10,6 +10,7 @@ repositories {
 dependencies {
     implementation(libs.web.ktor.server.core)
     implementation(libs.web.ktor.server.netty)
+    implementation(libs.web.ktor.server.pages)
     implementation(libs.web.ktor.server.content.negotiation)
     implementation(libs.web.ktor.serialization.json)
 
