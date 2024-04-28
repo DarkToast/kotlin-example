@@ -18,11 +18,7 @@ data class Person(
     init {
         val failures = mutableListOf<FieldFailure>()
 
-        fun validate(
-            field: String,
-            message: String,
-            assert: () -> Boolean,
-        ) {
+        fun validate(field: String, message: String, assert: () -> Boolean) {
             if (assert()) failures += FieldFailure("Person", field, message)
         }
 
