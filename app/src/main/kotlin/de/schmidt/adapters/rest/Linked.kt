@@ -4,7 +4,11 @@ import kotlinx.serialization.Serializable
 import java.net.URI
 
 enum class Method {
-    POST, GET, DELETE, PUT
+    POST,
+    GET,
+    DELETE,
+    PUT,
+    PATCH,
 }
 
 @Serializable
