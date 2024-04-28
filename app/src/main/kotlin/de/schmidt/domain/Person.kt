@@ -7,25 +7,34 @@ import kotlinx.serialization.Transient
 data class Person(
     val anrede: Anrede?,
     val vorname: String,
-    val nachname: String
+    val nachname: String,
 ) {
     @Transient
-    private val vornameRegex: Regex = "^[a-zA-ZöäüÖÄÜßéèê -]{1,32}".toRegex()
+    private val vornameRegex: Regex = "^[a-zA-ZöäüÖÄÜßéèê -]{0,32}".toRegex()
 
     @Transient
-    private val nachnameRegex: Regex = "^[a-zA-ZöäüÖÄÜßéèê -]{1,32}".toRegex()
+    private val nachnameRegex: Regex = "^[a-zA-ZöäüÖÄÜßéèê -]{0,32}".toRegex()
 
     init {
-        val failures  = mutableListOf<FieldFailure>()
-        if(vorname.isEmpty()) failures += FieldFailure("Person", "vorname", "Vorname is empty")
-        if(vorname.length > 33) failures += FieldFailure("Person", "vorname", "Vorname is longer than 32 characters.")
-        if(!vornameRegex.matches(vorname)) failures += FieldFailure("Person", "vorname", "Vorname contains irregular characters.")
+        val failures = mutableListOf<FieldFailure>()
 
-        if(nachname.isEmpty()) failures += FieldFailure("Person", "nachname", "Nachname is empty")
-        if(nachname.length > 33) failures += FieldFailure("Person", "nachname", "Nachname is longer than 32 characters.")
-        if(!nachnameRegex.matches(nachname)) failures += FieldFailure("nachname", "Nachname", "Nachname contains irregular characters.")
+        fun validate(
+            field: String,
+            message: String,
+            assert: () -> Boolean,
+        ) {
+            if (assert()) failures += FieldFailure("Person", field, message)
+        }
 
-        if(failures.isNotEmpty()) throw DomainException(failures)
+        validate("vorname", "Vorname is empty") { vorname.isEmpty() }
+        validate("vorname", "Vorname is longer than 32 characters.") { vorname.length > 33 }
+        validate("vorname", "Vorname contains irregular characters.") { !vornameRegex.matches(vorname) }
+
+        validate("nachname", "Nachname is empty") { nachname.isEmpty() }
+        validate("nachname", "Nachname is longer than 32 characters.") { nachname.length > 33 }
+        validate("nachname", "Nachname contains irregular characters.") { !nachnameRegex.matches(nachname) }
+
+        if (failures.isNotEmpty()) throw DomainException(failures)
     }
 }
 

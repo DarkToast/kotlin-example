@@ -2,6 +2,7 @@ package de.schmidt.domain
 
 import de.schmidt.domain.Anrede.Herr
 import org.junit.jupiter.api.Assertions.assertDoesNotThrow
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
@@ -22,8 +23,7 @@ class PersonTest {
             Person(Herr, vorname, "Schmidt")
         }
 
-//        assertEquals("Person", e.type)
-//        assertEquals("vorname", e.field)
+        assertEquals(1, e.failure.size)
     }
 
     @ParameterizedTest
@@ -41,8 +41,6 @@ class PersonTest {
             Person(Herr, "Christian", nachname)
         }
 
-//        assertEquals("Person", e.type)
-//        assertEquals("nachname", e.field)
+        assertEquals(1, e.failure.size)
     }
 }
-
