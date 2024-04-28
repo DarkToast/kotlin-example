@@ -22,6 +22,9 @@ dependencies {
 
     testImplementation(libs.test.ktor.server)
     testImplementation(libs.test.kotlin)
+    testImplementation(libs.test.assertj)
+    testImplementation(libs.test.junit.engine)
+    testImplementation(libs.test.junit.params)
 }
 
 kotlin {
